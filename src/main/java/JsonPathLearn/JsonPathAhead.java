@@ -1,6 +1,5 @@
 package JsonPathLearn;
 
-import io.restassured.path.json.JsonPath;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.HttpGet;
@@ -27,17 +26,18 @@ public class JsonPathAhead {
 		try {
 			String responseBody = HttpClientBuilder.create().setDefaultHeaders(new ArrayList<Header>() {
 				{
-					add(new BasicHeader("Authorization", "Basic authorizationId"));
+					add(new BasicHeader("Authorization", "Basic authentication"));
 				}
 			})
 					.build()
-					.execute(new HttpGet("url"+"/jira/rest/agile/1.0/issue/" + bugID),
+					.execute(new HttpGet("https://jiraURL"+"/jira/rest/agile/1.0/issue/"+bugID),
 							httpResponse -> {
 								HttpEntity entity = httpResponse.getEntity();
 								return entity != null ? EntityUtils.toString(entity) : null;
 							});
 
-			String bugStatus = new JsonPath(responseBody).getString("fields.status.name");
+			String bugStatus = com.jayway.jsonpath.JsonPath.parse(responseBody).read("fields.status.name");
+//			new io.restassured.path.json.JsonPath(responseBody).getString("fields.status.name");
 			if (bugStatus.equalsIgnoreCase("Closed"))
 				System.err.println(bugID + " <-- FAILED!!! Status Is : "+bugStatus);
 			else System.out.println(bugID + " <-- Success. Status Is : "+bugStatus);
