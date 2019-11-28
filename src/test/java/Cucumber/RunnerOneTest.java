@@ -11,7 +11,12 @@ import serenityTests.BaseClass;
         tags = "@baba",
         dryRun = false,
         glue = "Cucumber.Steps",
-        features = "src\\test\\resources\\features\\"
+        features = "src\\test\\resources\\features\\",
+		plugin = {
+				"pretty", "html:target/cucumber-report/single",
+				"json:target/cucumber-report/single/cucumber.json",
+				"rerun:target/cucumber-report/single/failed_scenarios.txt"
+        }
 )
 
 public class RunnerOneTest extends BaseClass {
