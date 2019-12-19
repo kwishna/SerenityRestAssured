@@ -45,6 +45,18 @@ public class FirstSerenityTest {
 
     }
 
+    @Manual
+    @Test
+    public void testOne() {
+
+        int pageNo = 1;
+
+        ValidatableResponse all = SerenityRest.given().get("/?page="+pageNo).then().log().all(true);
+        all.assertThat().body(containsString("email"));
+        all.header("X-Powered-By", "Express");
+
+    }
+
     @Test
     public void testTwo() {
 

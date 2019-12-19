@@ -20,7 +20,7 @@ public class SerenityCRUDTest extends BaseClass {
     static String id;
 
     @WithTag("CRUD:create") // (Feature : Group Type) /** mvn clean verify -Dtags="CRUD:create" serenity:aggregate  To Run Only Grouped Tests */
-    @Title("Create Request")
+    @Title("Create Request") // Human Readable Title In Report
     @Test
     public void test_1_create() {
 
