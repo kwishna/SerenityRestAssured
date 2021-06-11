@@ -25,6 +25,6 @@ public class Rough {
 
 	public static void main(String[] args) {
 
-		findTextInThisWorkSpace("F:/Personal/Locker/APNS-053.mp4/old_mm - Copy/AltraIntegratedSuite/New", "wipro");
+		findTextInThisWorkSpace(".", "wi");
 	}
 }

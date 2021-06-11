@@ -4,7 +4,7 @@
 
     <test thread-count="5" name="Yahoo Sign Up Test">
         <classes>
-            <class name="rest.FirstTest"/>
+            <class name="rest.FirstTestNGTest"/>
         </classes>
     </test>
 </suite> <!-- Suite -->
